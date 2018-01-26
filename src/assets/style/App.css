@@ -7,11 +7,30 @@
   height: 80px;
 }
 
+.leftCol {
+  display: flex;
+  align-items:center;
+}
+
 .App-header {
   background-color: #222;
   height: 150px;
   padding: 20px;
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav {
+  display: flex;
+}
+.nav .item {
+  margin-left: 10px;
+  color: #fff;
+  display: block;
+  text-decoration: none;
+  font-size: 16px;
 }
 
 .App-title {
