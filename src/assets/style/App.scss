@@ -1,0 +1,99 @@
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.home {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  &__header {
+    padding: 15px;
+    min-height: 50px;
+    margin-bottom: 30px;
+    .form-control {
+      outline: none;
+      &:focus, &:active {
+        border: 1px solid #ced4da;
+        box-shadow: none;
+      }
+    }
+  }
+  &__content {
+    border: 1px solid #eaeaea;
+    display: flex;
+    flex: 1;
+  }
+  &__sidebar {
+    //margin-right: 15px;
+    width: 30%;
+    paddding: 15px;
+    border-right: 1px solid #eaeaea;
+    border-radius: 3px;
+  }
+  &__wrapUsers {
+    width: 70%;
+    padding: 15px;
+    .usersHeader {
+      padding: 15px;
+      border-bottom: 1px solid #eaeaea;
+    }
+    .itemUser {
+      &__content {
+
+      }
+    }
+    .usersList {
+      &__head {
+        display: flex;
+        > div {
+          padding: 15px;
+          flex: 1;
+        }
+      }
+    }
+  }
+}
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.leftCol {
+  display: flex;
+  align-items:center;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav {
+  display: flex;
+}
+.nav .item {
+  margin-left: 10px;
+  color: #fff;
+  display: block;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

@@ -10,7 +10,7 @@ class App extends Component {
   render() {
     const navList = [
       {
-        name: 'Home'
+        name: 'Home',
       },
       {
         name: 'About',
@@ -20,20 +20,18 @@ class App extends Component {
       },
     ];
     return (
-      <div className="App">
-        <Router>
-          <div>
-            <Header
-              showLogo
-              title='HomePage'
-              navList={navList}
-              handleClick={this.handleClickHeader}
-            />
-            <Route exact path="/" component={HomePage} />
-            <Route path="/about" component={About} />
-          </div>
-        </Router>
-      </div>
+      <Router>
+        <div className='App'>
+          <Header
+            showLogo
+            title='HomePage'
+            navList={navList}
+            handleClick={this.handleClickHeader}
+          />
+          <Route exact path="/" component={HomePage} />
+          <Route path="/about" component={About} />
+        </div>
+      </Router>
     );
   }
 }
