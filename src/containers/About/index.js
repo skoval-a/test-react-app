@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
-import Dropdown from '../../components/Dropdown';
+import {
+  Dropdown,
+} from '../../components';
 
 class About extends Component {
   constructor(props) {

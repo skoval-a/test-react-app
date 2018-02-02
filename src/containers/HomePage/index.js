@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
-import Header from '../../components/Header/index.js';
-import UserList from '../../components/UsersList';
+import {
+  Header,
+  UsersList,
+} from '../../components';
 
 
 class HomePage extends Component {
@@ -24,7 +26,7 @@ class HomePage extends Component {
             <div className="usersHeader">
               <h2 className='usersHeader__title'>Users</h2>
             </div>
-            <UserList
+            <UsersList
 
             />
           </div>
