@@ -9,32 +9,39 @@
   flex: 1; }
   .home__header {
     padding: 15px;
-    min-height: 50px;
-    margin-bottom: 30px; }
+    min-height: 50px; }
     .home__header .form-control {
       outline: none; }
       .home__header .form-control:focus, .home__header .form-control:active {
         border: 1px solid #ced4da;
         box-shadow: none; }
   .home__content {
-    border: 1px solid #eaeaea;
     display: flex;
-    flex: 1; }
+    flex: 1;
+    padding: 15px; }
   .home__sidebar {
-    width: 30%;
+    margin-right: 15px;
+    width: 25%;
     paddding: 15px;
-    border-right: 1px solid #eaeaea;
+    border: 1px solid #eaeaea;
     border-radius: 3px; }
   .home__wrapUsers {
-    width: 70%;
-    padding: 15px; }
+    width: 75%;
+    border: 1px solid #eaeaea; }
     .home__wrapUsers .usersHeader {
-      padding: 15px;
+      padding: 10px 15px;
       border-bottom: 1px solid #eaeaea; }
+      .home__wrapUsers .usersHeader__title {
+        font-weight: bold;
+        font-size: 20px; }
     .home__wrapUsers .usersList__head {
       display: flex; }
+      .home__wrapUsers .usersList__head p {
+        font-weight: bold;
+        font-size: 14px;
+        margin: 0; }
       .home__wrapUsers .usersList__head > div {
-        padding: 15px;
+        padding: 8px;
         flex: 1; }
 
 .App-logo {

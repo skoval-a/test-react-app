@@ -22,7 +22,7 @@ class HomePage extends Component {
           </div>
           <div className="home__wrapUsers">
             <div className="usersHeader">
-              <h2>Users</h2>
+              <h2 className='usersHeader__title'>Users</h2>
             </div>
             <UserList
 

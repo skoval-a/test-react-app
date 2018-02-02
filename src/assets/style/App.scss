@@ -10,7 +10,6 @@
   &__header {
     padding: 15px;
     min-height: 50px;
-    margin-bottom: 30px;
     .form-control {
       outline: none;
       &:focus, &:active {
@@ -20,23 +19,27 @@
     }
   }
   &__content {
-    border: 1px solid #eaeaea;
     display: flex;
     flex: 1;
+    padding: 15px;
   }
   &__sidebar {
-    //margin-right: 15px;
-    width: 30%;
+    margin-right: 15px;
+    width: 25%;
     paddding: 15px;
-    border-right: 1px solid #eaeaea;
+    border: 1px solid #eaeaea;
     border-radius: 3px;
   }
   &__wrapUsers {
-    width: 70%;
-    padding: 15px;
+    width: 75%;
+    border: 1px solid #eaeaea;
     .usersHeader {
-      padding: 15px;
+      padding: 10px 15px;
       border-bottom: 1px solid #eaeaea;
+      &__title {
+        font-weight: bold;
+        font-size: 20px;
+      }
     }
     .itemUser {
       &__content {
@@ -46,8 +49,13 @@
     .usersList {
       &__head {
         display: flex;
+        p {
+          font-weight: bold;
+          font-size: 14px;
+          margin: 0;
+        }
         > div {
-          padding: 15px;
+          padding: 8px;
           flex: 1;
         }
       }

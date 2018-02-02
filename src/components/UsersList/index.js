@@ -16,9 +16,6 @@ export default () => {
         <div>
           <p>Phone:</p>
         </div>
-        <div>
-          <p>Description:</p>
-        </div>
       </div>
       <ItemUser
 
