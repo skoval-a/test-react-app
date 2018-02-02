@@ -5,11 +5,27 @@ import {
   UsersList,
 } from '../../components';
 
+import url from '../../data.txt';
+
 
 class HomePage extends Component {
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: null,
+    };
+  }
   handleClickHeader = (item, index) => {
     console.log(index);
+  }
+
+  componentWillMount() {
+    fetch(url)
+      .then(response => console.log(response.json()))
+  }
+
+  updateApp(config) {
+
   }
 
   render() {

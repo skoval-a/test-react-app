@@ -34,8 +34,14 @@
       .home__wrapUsers .usersHeader__title {
         font-weight: bold;
         font-size: 20px; }
-    .home__wrapUsers .usersList__head {
+    .home__wrapUsers .itemUser {
       display: flex; }
+      .home__wrapUsers .itemUser > div {
+        padding: 8px;
+        flex: 1; }
+    .home__wrapUsers .usersList__head {
+      display: flex;
+      background: #eaeaea; }
       .home__wrapUsers .usersList__head p {
         font-weight: bold;
         font-size: 14px;

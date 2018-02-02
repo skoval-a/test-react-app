@@ -42,13 +42,16 @@
       }
     }
     .itemUser {
-      &__content {
-
+      display: flex;
+      > div {
+        padding: 8px;
+        flex: 1;
       }
     }
     .usersList {
       &__head {
         display: flex;
+        background: #eaeaea;
         p {
           font-weight: bold;
           font-size: 14px;
