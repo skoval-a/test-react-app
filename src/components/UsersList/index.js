@@ -1,6 +1,9 @@
 import React from 'react';
 import ItemUser from '../../components/ItemUser';
-export default () => {
+export default (props) => {
+  const  {
+    data,
+  } = props;
   return (
     <div className='usersList'>
       <div className="usersList__head">
@@ -17,9 +20,15 @@ export default () => {
           <p>Phone:</p>
         </div>
       </div>
-      <ItemUser
-
-      />
+      {
+        data && data.length > 0 &&
+        data.map((item, index) =>
+        <ItemUser
+          key={index}
+          updateApp={props.updateApp}
+          {...item}
+        />)
+      }
     </div>
   );
 }

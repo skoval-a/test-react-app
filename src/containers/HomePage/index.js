@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import {
-  Header,
+  ActiveUser,
   UsersList,
 } from '../../components';
 
@@ -13,6 +13,7 @@ class HomePage extends Component {
     super(props);
     this.state = {
       data: null,
+      activeUser: 0,
     };
   }
   handleClickHeader = (item, index) => {
@@ -21,11 +22,26 @@ class HomePage extends Component {
 
   componentWillMount() {
     fetch(url)
-      .then(response => console.log(response.json()))
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          data: data,
+        })
+      })
+
   }
 
   updateApp(config) {
-
+    const users = this.state.data;
+    this.setState(config);
+    users.length > 0 &&
+      users.map(item => {
+        if(item.id === config.activeUser) {
+          this.setState({
+            activeUser: item,
+          })
+        }
+      })
   }
 
   render() {
@@ -36,14 +52,17 @@ class HomePage extends Component {
         </div>
         <div className="home__content">
           <div className="home__sidebar">
-
+            <ActiveUser
+              activeUser={this.state.activeUser}
+            />
           </div>
           <div className="home__wrapUsers">
             <div className="usersHeader">
               <h2 className='usersHeader__title'>Users</h2>
             </div>
             <UsersList
-
+              data={this.state.data}
+              updateApp={this.updateApp.bind(this)}
             />
           </div>
         </div>

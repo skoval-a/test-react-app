@@ -1,19 +1,22 @@
 import React from 'react';
 
 export default (props) => {
+
   return (
-    <div className='itemUser'>
+    <div className='itemUser' onClick={() => props.updateApp({
+      activeUser: props.id,
+    })}>
       <div className="itemUser__image">
-        sdf
+        {props.image}
       </div>
       <div>
-        <p>sdf</p>
+        <p>{props.name}</p>
       </div>
       <div>
-        <p>sdf</p>
+        <p>{props.age}</p>
       </div>
       <div>
-        <p>sdf</p>
+        <p>{props.phone}</p>
       </div>
     </div>
   );
