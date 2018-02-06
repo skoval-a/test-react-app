@@ -35,10 +35,17 @@
         font-weight: bold;
         font-size: 20px; }
     .home__wrapUsers .itemUser {
-      display: flex; }
+      display: flex;
+      align-items: center; }
       .home__wrapUsers .itemUser > div {
         padding: 8px;
         flex: 1; }
+      .home__wrapUsers .itemUser__image {
+        flex: inherit !important;
+        width: 100px; }
+        .home__wrapUsers .itemUser__image img {
+          width: 60px;
+          height: 60px; }
     .home__wrapUsers .usersList__head {
       display: flex;
       background: #eaeaea; }
@@ -49,6 +56,9 @@
       .home__wrapUsers .usersList__head > div {
         padding: 8px;
         flex: 1; }
+      .home__wrapUsers .usersList__head .avatar {
+        width: 100px;
+        flex: inherit !important; }
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;

@@ -43,9 +43,18 @@
     }
     .itemUser {
       display: flex;
+      align-items: center;
       > div {
         padding: 8px;
         flex: 1;
+      }
+      &__image {
+        flex: inherit !important;
+        width: 100px;
+        img {
+          width: 60px;
+          height: 60px;
+        }
       }
     }
     .usersList {
@@ -60,6 +69,10 @@
         > div {
           padding: 8px;
           flex: 1;
+        }
+        .avatar {
+          width: 100px;
+          flex: inherit !important;
         }
       }
     }

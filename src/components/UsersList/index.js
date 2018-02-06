@@ -7,7 +7,7 @@ export default (props) => {
   return (
     <div className='usersList'>
       <div className="usersList__head">
-        <div>
+        <div className='avatar'>
           <p>Avatar:</p>
         </div>
         <div>

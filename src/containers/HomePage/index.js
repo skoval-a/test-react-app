@@ -13,7 +13,7 @@ class HomePage extends Component {
     super(props);
     this.state = {
       data: null,
-      activeUser: 0,
+      activeUser: null,
     };
   }
   handleClickHeader = (item, index) => {
@@ -26,6 +26,7 @@ class HomePage extends Component {
       .then(data => {
         this.setState({
           data: data,
+          activeUser: data[0],
         })
       })
 
@@ -35,13 +36,13 @@ class HomePage extends Component {
     const users = this.state.data;
     this.setState(config);
     users.length > 0 &&
-      users.map(item => {
-        if(item.id === config.activeUser) {
-          this.setState({
-            activeUser: item,
-          })
-        }
-      })
+    users.map(item => {
+      if(item.id === config.activeUser) {
+        this.setState({
+          activeUser: item,
+        })
+      }
+    });
   }
 
   render() {
@@ -49,6 +50,9 @@ class HomePage extends Component {
       <div className='home'>
         <div className="home__header">
           <input className='form-control' placeholder='Search users' />
+          <button className='btn btn-info'>
+            Sort Name
+          </button>
         </div>
         <div className="home__content">
           <div className="home__sidebar">
