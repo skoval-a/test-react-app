@@ -5,12 +5,24 @@ export default  (props) => {
   console.log(props.activeUser);
   return (
     <div className="activeUser">
-      <div>
+      <div className='activeUser__image'>
+        <img src={user.image} alt=""/>
+      </div>
+      {
+        user.name &&
+        <p className='activeUser__text'>
+          {user.name}
+        </p>
+      }
+      <p className='activeUser__text'>
+        {user.age}
+      </p>
+      <p className='activeUser__text'>
+        {user.phone}
+      </p>
+      <p className='activeUser__text'>
         {user.name}
-      </div>
-      <div>
-
-      </div>
+      </p>
     </div>
   );
 }

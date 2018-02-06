@@ -78,6 +78,25 @@
     }
   }
 }
+
+.activeUser  {
+  padding: 10px;
+  text-align: center;
+  &__image {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eaeaea;
+    img {
+      max-width: 100%;
+      width: 150px;
+      height: 150px;
+    }
+  }
+  &__text {
+    margin: 0;
+    padding: 8px;
+    border-bottom: 1px solid #eaeaea;
+  }
+}
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;

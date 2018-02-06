@@ -14,6 +14,7 @@ class HomePage extends Component {
     this.state = {
       data: null,
       activeUser: null,
+      errorMessage: false,
     };
   }
   handleClickHeader = (item, index) => {
@@ -35,14 +36,22 @@ class HomePage extends Component {
   updateApp(config) {
     const users = this.state.data;
     this.setState(config);
-    users.length > 0 &&
-    users.map(item => {
-      if(item.id === config.activeUser) {
-        this.setState({
-          activeUser: item,
-        })
-      }
-    });
+    console.log(config.activeUser);
+    if(config.activeUser === this.state.activeUser.id) {
+      this.setState({
+        errorMessage: true,
+      })
+    } else {
+      users.length > 0 &&
+      users.map(item => {
+        if(item.id === config.activeUser) {
+          this.setState({
+            activeUser: item,
+            errorMessage: false,
+          })
+        }
+      });
+    }
   }
 
   render() {
@@ -59,6 +68,12 @@ class HomePage extends Component {
             <ActiveUser
               activeUser={this.state.activeUser}
             />
+            {
+              this.state.errorMessage &&
+                <h1>
+                  Error
+                </h1>
+            }
           </div>
           <div className="home__wrapUsers">
             <div className="usersHeader">
