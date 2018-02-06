@@ -6,7 +6,18 @@ export default (props) => {
     <div className='itemUser' onClick={() => props.updateApp({
       activeUser: props.id,
     })}>
-      
+      <div className="itemUser__image">
+        <img src={props.image} alt=""/>
+      </div>
+      <div>
+        <p>{props.name}</p>
+      </div>
+      <div>
+        <p>{props.age}</p>
+      </div>
+      <div>
+        <p>{props.phone}</p>
+      </div>
     </div>
   );
 }
