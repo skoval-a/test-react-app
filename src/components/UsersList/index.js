@@ -29,6 +29,28 @@ export default (props) => {
           {...item}
         />)
       }
+      <nav aria-label="Page navigation example">
+        <ul className="pagination">
+          <li className="page-item">
+            <a
+              href="#"
+              className="page-link"
+              onClick={() => props.handlePagination(-1)}
+            >
+              Prev
+            </a>
+          </li>
+          <li className="page-item">
+            <a
+              href="#"
+              className="page-link"
+              onClick={() => props.handlePagination(1)}
+            >
+              Next
+            </a>
+          </li>
+        </ul>
+      </nav>
     </div>
   );
 }

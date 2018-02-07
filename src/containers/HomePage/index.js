@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import {
   ActiveUser,
   UsersList,
+  SearchInput,
 } from '../../components';
 
 import url from '../../data.txt';
@@ -15,18 +16,22 @@ class HomePage extends Component {
       data: null,
       activeUser: null,
       errorMessage: false,
+      errorSearch: false,
+      activeNumber: 0,
+      currentPage: 0,
     };
   }
   handleClickHeader = (item, index) => {
-    console.log(index);
+
   }
 
   componentWillMount() {
     fetch(url)
       .then(response => response.json())
       .then(data => {
+        this.initialData = data;
         this.setState({
-          data: data,
+          data: this.initialData,
           activeUser: data[0],
         })
       })
@@ -36,32 +41,60 @@ class HomePage extends Component {
   updateApp(config) {
     const users = this.state.data;
     this.setState(config);
-    console.log(config.activeUser);
-    if(config.activeUser === this.state.activeUser.id) {
+    if (config.activeUser) {
+      if (config.activeUser.id === this.state.activeUser.id) {
+        this.setState({
+          errorMessage: true,
+        })
+      } else {
+        this.setState({
+          errorMessage: false,
+        })
+      }
+    }
+  }
+
+  search = (e) => {
+    const value = e.target.value.toLowerCase();
+    const fillter = this.initialData.filter(user => {
+      return user.name.toLowerCase().includes(value);
+    })
+    this.updateApp({
+      data: fillter,
+    });
+    if(fillter.length > 0) {
       this.setState({
-        errorMessage: true,
+        errorSearch: false,
       })
     } else {
-      users.length > 0 &&
-      users.map(item => {
-        if(item.id === config.activeUser) {
-          this.setState({
-            activeUser: item,
-            errorMessage: false,
-          })
-        }
+      this.setState({
+        errorSearch: true,
       });
     }
+  }
+
+  handlePagination = (number) => {
+    const current = this.state.currentPage;
+    if(current + number >= 0 && current + number < Math.ceil(this.state.data.length  / 15)) {
+      this.setState(prev => ({
+          currentPage: prev.currentPage + number,
+        }
+      ));
+    }
+  }
+
+  splitUsers = () => {
+    return this.state.data && this.state.data.slice(this.state.currentPage * 15, this.state.currentPage * 15 + 15);
   }
 
   render() {
     return (
       <div className='home'>
         <div className="home__header">
-          <input className='form-control' placeholder='Search users' />
-          <button className='btn btn-info'>
-            Sort Name
-          </button>
+          <SearchInput
+            searchValue={this.search.bind(this)}
+            isError={this.state.errorSearch}
+          />
         </div>
         <div className="home__content">
           <div className="home__sidebar">
@@ -80,7 +113,8 @@ class HomePage extends Component {
               <h2 className='usersHeader__title'>Users</h2>
             </div>
             <UsersList
-              data={this.state.data}
+              data={this.splitUsers()}
+              handlePagination={this.handlePagination}
               updateApp={this.updateApp.bind(this)}
             />
           </div>

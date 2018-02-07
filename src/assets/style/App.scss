@@ -10,11 +10,20 @@
   &__header {
     padding: 15px;
     min-height: 50px;
+    .input-group {
+      display: flex;
+      flex-direction: column;
+    }
     .form-control {
+      width: 100%;
+      margin-bottom: 10px;
       outline: none;
       &:focus, &:active {
         border: 1px solid #ced4da;
         box-shadow: none;
+      }
+      &.is-invalid {
+        border-color: #dc3545 !important;
       }
     }
   }
