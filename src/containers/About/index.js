@@ -8,18 +8,25 @@ class About extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isOpenDropdown: false,
+      isOpenDropdown: [],
     };
   }
 
-  isContentDropdown = () => {
-    this.setState({
-      isOpenDropdown: !this.state.isOpenDropdown,
-    });
+  isContentDropdown = (id) => {
+    if (this.state.isOpenDropdown.length > 0 && this.state.isOpenDropdown.includes(id) ) {
+      this.setState({
+        isOpenDropdown: this.state.isOpenDropdown.filter(item => item !== id)
+      });
+    } else if (!this.state.isOpenDropdown.includes(id)) {
+      this.setState({
+        isOpenDropdown: [...this.state.isOpenDropdown,id],
+      });
+    }
   }
 
+
   render() {
-    console.log('-------');
+    console.log('-------', this.state.isOpenDropdown);
     return (
       <div className='about'>
         <div className="about__header">
@@ -27,8 +34,21 @@ class About extends Component {
         </div>
         <div className="content">
           <Dropdown
+            id={1}
             title='Dropdown'
-            isContentDropdown={this.isContentDropdown}
+            isContentDropdown={() => this.isContentDropdown(1)}
+            {...this.state}
+          />
+          <Dropdown
+            id={2}
+            title='Dropdown'
+            isContentDropdown={() => this.isContentDropdown(2)}
+            {...this.state}
+          />
+          <Dropdown
+            id={3}
+            title='Dropdown'
+            isContentDropdown={() => this.isContentDropdown(3)}
             {...this.state}
           />
         </div>

@@ -35,7 +35,7 @@ export default (props) => {
             <a
               href="#"
               className="page-link"
-              onClick={() => props.handlePagination(-1)}
+              onClick={(e) => props.handlePagination(e, -1)}
             >
               Prev
             </a>
@@ -44,7 +44,7 @@ export default (props) => {
             <a
               href="#"
               className="page-link"
-              onClick={() => props.handlePagination(1)}
+              onClick={(e) => props.handlePagination(e, 1)}
             >
               Next
             </a>

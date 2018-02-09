@@ -39,11 +39,12 @@ class HomePage extends Component {
   }
 
   updateApp(config) {
-    const users = this.state.data;
+    console.log('config', config);
     this.setState(config);
+
     if (config.activeUser) {
       if (config.activeUser.id === this.state.activeUser.id) {
-        this.setState({
+          this.setState({
           errorMessage: true,
         })
       } else {
@@ -73,7 +74,9 @@ class HomePage extends Component {
     }
   }
 
-  handlePagination = (number) => {
+  handlePagination = (e, number) => {
+    e.preventDefault();
+    console.log(e);
     const current = this.state.currentPage;
     if(current + number >= 0 && current + number < Math.ceil(this.state.data.length  / 15)) {
       this.setState(prev => ({
@@ -87,7 +90,29 @@ class HomePage extends Component {
     return this.state.data && this.state.data.slice(this.state.currentPage * 15, this.state.currentPage * 15 + 15);
   }
 
+  sort = (type) => {
+    const data = this.initialData;
+    console.log('sort', this.initialData);
+    const sorted = data.sort((a, b) => {
+      return a[type] > b[type] ? 1 : -1;
+    });
+    this.setState({
+      data: sorted,
+    })
+  }
+
+  reset = () => {
+    console.log('initialData', this.initialData);
+    this.updateApp({
+      data: this.initialData,
+      activeUser: 0,
+    });
+
+    console.log('6666', this.state.data);
+  }
+
   render() {
+    console.log('render', this.state.data);
     return (
       <div className='home'>
         <div className="home__header">
@@ -95,6 +120,32 @@ class HomePage extends Component {
             searchValue={this.search.bind(this)}
             isError={this.state.errorSearch}
           />
+          <div className='rowSorting'>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onClick={() => this.sort('name')}
+            >
+                <i class="fa fa-users"></i>
+                <p className='btnName'>Name</p>
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onClick={() => this.sort('age')}
+            >
+              <i class="fa fa-sort-amount-desc"></i>
+              <p className='btnName'>Age</p>
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              onClick={() => this.reset()}
+            >
+              <i class="fa fa-ban"></i>
+              <p className='btnName'>Reset</p>
+            </button>
+          </div>
         </div>
         <div className="home__content">
           <div className="home__sidebar">

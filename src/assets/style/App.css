@@ -67,6 +67,21 @@
         width: 100px;
         flex: inherit !important; }
 
+.rowSorting {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; }
+  .rowSorting .btn {
+    display: flex;
+    align-items: center;
+    margin-left: 15px; }
+    .rowSorting .btn:first-child {
+      margin-left: 0px; }
+    .rowSorting .btn .btnName {
+      margin: 0 0 0 5px; }
+    .rowSorting .btn:last-child {
+      margin-left: 15px; }
+
 .activeUser {
   padding: 10px;
   text-align: center; }
@@ -120,3 +135,12 @@
     transform: rotate(0deg); }
   to {
     transform: rotate(360deg); } }
+
+.dropdown__head {
+  padding: 15px;
+  min-height: 42px;
+  border-radius: 5px;
+  border: 1px solid #eaeaea; }
+
+.dropdown__content {
+  padding: 10px; }
