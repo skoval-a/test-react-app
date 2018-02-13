@@ -19,6 +19,7 @@ class HomePage extends Component {
       errorSearch: false,
       activeNumber: 0,
       currentPage: 0,
+      listPages: null,
     };
   }
   handleClickHeader = (item, index) => {
@@ -33,13 +34,12 @@ class HomePage extends Component {
         this.setState({
           data: this.initialData,
           activeUser: data[0],
+          listPages: Math.ceil(data.length  / 15),
         })
       })
-
   }
 
   updateApp(config) {
-    console.log('config', config);
     this.setState(config);
 
     if (config.activeUser) {
@@ -61,6 +61,7 @@ class HomePage extends Component {
       return user.name.toLowerCase().includes(value);
     })
     this.updateApp({
+      currentPage: 0,
       data: fillter,
     });
     if(fillter.length > 0) {
@@ -74,15 +75,21 @@ class HomePage extends Component {
     }
   }
 
-  handlePagination = (e, number) => {
-    e.preventDefault();
-    console.log(e);
+  handlePagination = (number, index) => {
     const current = this.state.currentPage;
-    if(current + number >= 0 && current + number < Math.ceil(this.state.data.length  / 15)) {
-      this.setState(prev => ({
-          currentPage: prev.currentPage + number,
-        }
-      ));
+    if (index >= 0) {
+      this.setState({
+        currentPage: index,
+      })
+    } else {
+      const listPages = Math.ceil(this.state.data.length  / 15);
+      if(current + number >= 0 && current + number < listPages) {
+        this.setState(prev => ({
+            listPages,
+            currentPage: prev.currentPage + number,
+          }
+        ));
+      }
     }
   }
 
@@ -107,12 +114,10 @@ class HomePage extends Component {
       data: this.initialData,
       activeUser: 0,
     });
-
-    console.log('6666', this.state.data);
   }
 
   render() {
-    console.log('render', this.state.data);
+    console.log('listPages', this.state.listPages);
     return (
       <div className='home'>
         <div className="home__header">
@@ -123,26 +128,26 @@ class HomePage extends Component {
           <div className='rowSorting'>
             <button
               type="button"
-              class="btn btn-primary"
+              className="btn btn-primary"
               onClick={() => this.sort('name')}
             >
-                <i class="fa fa-users"></i>
+                <i className="fa fa-users"></i>
                 <p className='btnName'>Name</p>
             </button>
             <button
               type="button"
-              class="btn btn-primary"
+              className="btn btn-primary"
               onClick={() => this.sort('age')}
             >
-              <i class="fa fa-sort-amount-desc"></i>
+              <i className="fa fa-sort-amount-desc"></i>
               <p className='btnName'>Age</p>
             </button>
             <button
               type="button"
-              class="btn btn-danger"
+              className="btn btn-danger"
               onClick={() => this.reset()}
             >
-              <i class="fa fa-ban"></i>
+              <i className="fa fa-ban"></i>
               <p className='btnName'>Reset</p>
             </button>
           </div>
@@ -164,7 +169,9 @@ class HomePage extends Component {
               <h2 className='usersHeader__title'>Users</h2>
             </div>
             <UsersList
+              listPages={this.state.listPages}
               data={this.splitUsers()}
+              currentPage={this.state.currentPage}
               handlePagination={this.handlePagination}
               updateApp={this.updateApp.bind(this)}
             />

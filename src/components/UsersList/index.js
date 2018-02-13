@@ -1,6 +1,12 @@
 import React from 'react';
 import ItemUser from '../../components/ItemUser';
 export default (props) => {
+  const listPagesArray = [];
+  if (props.listPages) {
+    for(let i = 0; i < props.listPages; i++) {
+      listPagesArray.push(i);
+    }
+  }
   const  {
     data,
   } = props;
@@ -35,16 +41,38 @@ export default (props) => {
             <a
               href="#"
               className="page-link"
-              onClick={(e) => props.handlePagination(e, -1)}
-            >
-              Prev
-            </a>
+              onClick={(e) => {
+                e.preventDefault();
+                props.handlePagination(e, -1)}
+              }>Prev</a>
           </li>
+
+          {
+            listPagesArray.map(index =>
+              <li key={index}
+                  className={`page-item ${props.currentPage === index ? 'active' : ''}`}
+              >
+                <a
+                  href="#"
+                  className='page-link'
+                  onClick={(e) => {
+                    e.preventDefault();
+                    props.handlePagination(0,index)
+                  }}
+                >
+                  {index + 1}
+                </a>
+              </li>
+            )
+          }
           <li className="page-item">
             <a
               href="#"
               className="page-link"
-              onClick={(e) => props.handlePagination(e, 1)}
+              onClick={(e) => {
+                e.preventDefault();
+                props.handlePagination(e, 1)
+              }}
             >
               Next
             </a>
