@@ -144,3 +144,9 @@
 
 .dropdown__content {
   padding: 10px; }
+
+.about {
+  padding: 15px; }
+  .about__content {
+    display: flex;
+    justify-content: space-between; }

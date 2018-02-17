@@ -10,7 +10,7 @@ export default props => {
         {props.title}
       </button>
       {
-        props.isOpenDropdown.includes(props.id) &&
+        props.isOpenDropdown &&
         <div className='dropdown__content'>
           DropdownContent
         </div>
