@@ -87,6 +87,14 @@
     }
   }
 }
+.btn-success {
+  display: flex;
+  align-items: center;
+  p {
+    margin-left: 5px;
+    margin-bottom: 0;
+  }
+}
 .rowSorting {
   display: flex;
   align-items: center;
@@ -184,7 +192,8 @@
 .about {
   padding: 15px;
   &__content {
-    display: flex;
-    justify-content: space-between;
+    //display: flex;
+    //justify-content: space-between;
   }
 }
+

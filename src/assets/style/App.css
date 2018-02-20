@@ -67,6 +67,13 @@
         width: 100px;
         flex: inherit !important; }
 
+.btn-success {
+  display: flex;
+  align-items: center; }
+  .btn-success p {
+    margin-left: 5px;
+    margin-bottom: 0; }
+
 .rowSorting {
   display: flex;
   align-items: center;
@@ -147,6 +154,3 @@
 
 .about {
   padding: 15px; }
-  .about__content {
-    display: flex;
-    justify-content: space-between; }

@@ -1,8 +1,6 @@
 import { combineReducers } from 'redux';
-import users from './users';
-import userFriends from './userFriends';
+import contacts from './contactReducer';
 
 export default combineReducers({
-  users,
-  userFriends,
+ contacts: contacts,
 });
